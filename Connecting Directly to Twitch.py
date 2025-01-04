@@ -7,17 +7,8 @@ import asyncio
 
 class TwitchPlaysConnection:
     def __init__(self, config):
-        self.config = config
-        self.session = None
-        self.fetch_job = None
-        self.next_fetch_time = time.time()
-        self.thread_pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-        self.bot = commands.Bot(
-            irc_token=self.config['wss://irc-ws.chat.twitch.tv:443'],
-            #client_id=self.config['gp762nuuoqcoxypju8c569th9wz7q5'],
-            #nick=self.config['HackMan617'],
-           # prefix=self.config['Hack'],
-           # initial_channels=[self.config['HackMan617']]
+        #Ideally, this would contain the initial session request to be established with Twitch, but for the LIFE of me I can't get my Authentication Codes to work. Looked everywhere.
+    pass
         )
 
     def connect(self):
@@ -114,6 +105,6 @@ if __name__ == "__main__":
         'fetch_interval': 5  # Example interval
     }
 
-    connection = TwitchPlaysConnection(config)
+    connection = TwitchPlaysConnection(config) #Piece of Program
     loop = asyncio.get_event_loop()
     loop.run_until_complete(connection.input_loop())
